@@ -25,8 +25,8 @@ ctest --test-dir build
 Optional example binaries (one per partition):
 
 ```bash
-./build/type_list_construct_push_front_example
-./build/type_list_transform_map_example
+./build/type_list_push_front_example
+./build/type_list_map_example
 ```
 
 ## Usage
@@ -47,7 +47,7 @@ using ExpectedList = type_list::from_pack_t<Fst, Snd, Trd>;
 static_assert(std::same_as<ExtendedList, ExpectedList>);
 ```
 
-See `examples/` for per-partition walkthroughs (mirrors `modules/` and `tests/`) and [docs/API.md](docs/API.md) for the full metafunction reference.
+See `examples/` for per-partition walkthroughs (one file per partition, matching `modules/type_list/`) and [docs/API.md](docs/API.md) for the full metafunction reference.
 
 ## Project layout
 
@@ -79,19 +79,19 @@ modules/
     reverse.cppm              # :reverse
     flatten.cppm              # :flatten
 tests/
-  core/
-  traits/
-  access/
-  construct/
-  transform/
-  combine/
+  types_test.cpp
+  type_list_test.cpp
+  empty_test.cpp
+  size_test.cpp
+  front_test.cpp
+  ...
 examples/
-  core/
-  traits/
-  access/
-  construct/
-  transform/
-  combine/
+  types_example.cpp
+  type_list_example.cpp
+  empty_example.cpp
+  size_example.cpp
+  front_example.cpp
+  ...
 ```
 
 Import the full library with `import type_list` or a single partition:

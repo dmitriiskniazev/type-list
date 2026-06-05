@@ -66,70 +66,68 @@ target_sources(type_list
 target_include_directories(type_list PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(TYPE_LIST_TESTS
-    core/types_test.cpp
-    core/type_list_test.cpp
-    traits/empty_test.cpp
-    traits/size_test.cpp
-    access/front_test.cpp
-    access/back_test.cpp
-    access/pop_front_test.cpp
-    access/pop_back_test.cpp
-    construct/push_front_test.cpp
-    construct/push_back_test.cpp
-    construct/insert_test.cpp
-    construct/concat_test.cpp
-    construct/from_pack_test.cpp
-    transform/map_test.cpp
-    transform/filter_test.cpp
-    transform/fold_left_test.cpp
-    transform/fold_right_test.cpp
-    combine/zip_test.cpp
-    combine/zip_with_test.cpp
-    combine/unzip_test.cpp
-    combine/reverse_test.cpp
-    combine/flatten_test.cpp
+    types_test.cpp
+    type_list_test.cpp
+    empty_test.cpp
+    size_test.cpp
+    front_test.cpp
+    back_test.cpp
+    pop_front_test.cpp
+    pop_back_test.cpp
+    push_front_test.cpp
+    push_back_test.cpp
+    insert_test.cpp
+    concat_test.cpp
+    from_pack_test.cpp
+    map_test.cpp
+    filter_test.cpp
+    fold_left_test.cpp
+    fold_right_test.cpp
+    zip_test.cpp
+    zip_with_test.cpp
+    unzip_test.cpp
+    reverse_test.cpp
+    flatten_test.cpp
 )
 
 enable_testing()
 
 foreach(rel_path IN LISTS TYPE_LIST_TESTS)
     string(REPLACE ".cpp" "" stem "${rel_path}")
-    string(REPLACE "/" "_" target_suffix "${stem}")
-    set(target "type_list_${target_suffix}")
+    set(target "type_list_${stem}")
     add_executable(${target} "tests/${rel_path}")
     target_link_libraries(${target} PRIVATE type_list)
     add_test(NAME ${target} COMMAND ${target})
 endforeach()
 
 set(TYPE_LIST_EXAMPLES
-    core/types_example.cpp
-    core/type_list_example.cpp
-    traits/empty_example.cpp
-    traits/size_example.cpp
-    access/front_example.cpp
-    access/back_example.cpp
-    access/pop_front_example.cpp
-    access/pop_back_example.cpp
-    construct/push_front_example.cpp
-    construct/push_back_example.cpp
-    construct/insert_example.cpp
-    construct/concat_example.cpp
-    construct/from_pack_example.cpp
-    transform/map_example.cpp
-    transform/filter_example.cpp
-    transform/fold_left_example.cpp
-    transform/fold_right_example.cpp
-    combine/zip_example.cpp
-    combine/zip_with_example.cpp
-    combine/unzip_example.cpp
-    combine/reverse_example.cpp
-    combine/flatten_example.cpp
+    types_example.cpp
+    type_list_example.cpp
+    empty_example.cpp
+    size_example.cpp
+    front_example.cpp
+    back_example.cpp
+    pop_front_example.cpp
+    pop_back_example.cpp
+    push_front_example.cpp
+    push_back_example.cpp
+    insert_example.cpp
+    concat_example.cpp
+    from_pack_example.cpp
+    map_example.cpp
+    filter_example.cpp
+    fold_left_example.cpp
+    fold_right_example.cpp
+    zip_example.cpp
+    zip_with_example.cpp
+    unzip_example.cpp
+    reverse_example.cpp
+    flatten_example.cpp
 )
 
 foreach(rel_path IN LISTS TYPE_LIST_EXAMPLES)
     string(REPLACE ".cpp" "" stem "${rel_path}")
-    string(REPLACE "/" "_" target_suffix "${stem}")
-    set(target "type_list_${target_suffix}")
+    set(target "type_list_${stem}")
     add_executable(${target} "examples/${rel_path}")
     target_link_libraries(${target} PRIVATE type_list)
 endforeach()
