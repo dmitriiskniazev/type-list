@@ -54,8 +54,24 @@ jobs:
         env:
           LLVM_VERSION: ${{ env.LLVM_VERSION }}
 
+      - name: Install CMake (Ubuntu)
+        if: runner.os == 'Linux'
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: 4.3.2
+
       - name: Configure
-        run: cmake -B build -G Ninja -DCMAKE_CXX_COMPILER="${{ matrix.compiler }}"
+        run: |
+          extra_args=()
+          if [[ "${{ runner.os }}" == "Linux" ]]; then
+            extra_args+=(
+              "-DCMAKE_CXX_STDLIB_MODULES_JSON=/usr/lib/llvm-${{ env.LLVM_VERSION }}/share/libc++/v1/libc++.modules.json"
+            )
+          fi
+          cmake -B build -G Ninja \
+            -DCMAKE_CXX_COMPILER="${{ matrix.compiler }}" \
+            "${extra_args[@]}"
+
 
       - name: Build
         run: cmake --build build -j

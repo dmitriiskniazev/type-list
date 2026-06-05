@@ -14,7 +14,7 @@ Compile-time type lists for C++23 modules: a `nil` / `cons` spine, one module pa
 ## Requirements
 
 - **Compiler:** Clang 19+ with `-std=c++23` and experimental modules (`import std`)
-- **Build:** CMake 3.28+ and Ninja (recommended)
+- **Build:** CMake 4.3+ and Ninja (recommended; `import std` requires a recent CMake)
 - **macOS:** [Homebrew LLVM](https://formulae.brew.sh/formula/llvm) — the project expects `/opt/homebrew/opt/llvm/bin/clang++`
 
 ## Quick start
