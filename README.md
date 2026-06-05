@@ -1,4 +1,4 @@
-# cpp23-type-list
+# type-list
 
 Compile-time type lists in **C++23 modules**: a Lisp-style `nil` / `cons` spine with metafunctions for map, filter, fold, zip, and more. Educational code — no runtime list API, only `static_assert` and type aliases.
 

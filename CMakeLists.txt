@@ -20,7 +20,7 @@ if(CMAKE_CXX_COMPILER MATCHES "clang")
     unset(_stdlib_modules_json)
 endif()
 
-project(cpp23-type-list LANGUAGES CXX)
+project(type-list LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
