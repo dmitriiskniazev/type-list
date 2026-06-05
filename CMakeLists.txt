@@ -31,9 +31,7 @@ if(CMAKE_CXX_COMPILER MATCHES "clang")
     endforeach()
     if(UNIX AND NOT APPLE)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
-        set(CMAKE_EXE_LINKER_FLAGS
-            "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -Wl,-rpath,${_llvm_prefix}/lib")
-        set(CMAKE_BUILD_RPATH "${_llvm_prefix}/lib")
+        set(_type_list_llvm_root "${_llvm_prefix}" CACHE INTERNAL "")
     endif()
     unset(_llvm_bin)
     unset(_llvm_prefix)
@@ -50,6 +48,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_MODULE_STD ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+if(UNIX AND NOT APPLE AND _type_list_llvm_root)
+    add_link_options(-stdlib=libc++ "-Wl,-rpath,${_type_list_llvm_root}/lib")
+    set(CMAKE_BUILD_RPATH "${_type_list_llvm_root}/lib")
+endif()
 
 if(NOT CMAKE_GENERATOR MATCHES "Ninja" AND NOT CMAKE_GENERATOR MATCHES "Visual Studio")
     message(FATAL_ERROR

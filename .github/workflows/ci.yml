@@ -64,4 +64,11 @@ jobs:
         run: cmake --build build -j
 
       - name: Test
+        env:
+          LD_LIBRARY_PATH: ${{ env.LLVM_INSTALL_DIR }}/lib:${{ env.LD_LIBRARY_PATH }}
+        if: runner.os == 'Linux'
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Test
+        if: runner.os == 'macOS'
         run: ctest --test-dir build --output-on-failure
