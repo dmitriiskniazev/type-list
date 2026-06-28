@@ -32,6 +32,11 @@ target_sources(type_list PUBLIC FILE_SET CXX_MODULES FILES
             src/build/build.cppm
             src/build/insert.cppm
             src/build/concat.cppm
+            src/build/from_pack.cppm
+            src/transform/transform.cppm
+            src/transform/map.cppm
+            src/transform/filter.cppm
+            src/transform/fold_left.cppm
 )
 target_include_directories(type_list PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 add_executable(type_list_core_smoke_test "tests/core/smoke_test.cpp")
@@ -76,7 +81,21 @@ add_test(NAME type_list_build_concat_test COMMAND type_list_build_concat_test)
 add_executable(type_list_build_from_pack_test "tests/build/from_pack_test.cpp")
 target_link_libraries(type_list_build_from_pack_test PRIVATE type_list)
 add_test(NAME type_list_build_from_pack_test COMMAND type_list_build_from_pack_test)
+add_executable(type_list_transform_map_test "tests/transform/map_test.cpp")
+target_link_libraries(type_list_transform_map_test PRIVATE type_list)
+add_test(NAME type_list_transform_map_test COMMAND type_list_transform_map_test)
+add_executable(type_list_transform_filter_test "tests/transform/filter_test.cpp")
+target_link_libraries(type_list_transform_filter_test PRIVATE type_list)
+add_test(NAME type_list_transform_filter_test COMMAND type_list_transform_filter_test)
+add_executable(type_list_transform_fold_left_test "tests/transform/fold_left_test.cpp")
+target_link_libraries(type_list_transform_fold_left_test PRIVATE type_list)
+add_test(NAME type_list_transform_fold_left_test COMMAND type_list_transform_fold_left_test)
+add_executable(type_list_transform_fold_right_test "tests/transform/fold_right_test.cpp")
+target_link_libraries(type_list_transform_fold_right_test PRIVATE type_list)
+add_test(NAME type_list_transform_fold_right_test COMMAND type_list_transform_fold_right_test)
 add_executable(type_list_core "examples/core.cpp")
 target_link_libraries(type_list_core PRIVATE type_list)
 add_executable(type_list_access "examples/access.cpp")
 target_link_libraries(type_list_access PRIVATE type_list)
+add_executable(type_list_transform "examples/transform.cpp")
+target_link_libraries(type_list_transform PRIVATE type_list)
