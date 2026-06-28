@@ -1,3 +1,0 @@
--x c++-module
--fmodule-output="CMakeFiles/type_list.dir/type_list.core-types.pcm"
--fmodule-file="std=CMakeFiles/__cmake_cxx_std_23.dir/std.pcm"
