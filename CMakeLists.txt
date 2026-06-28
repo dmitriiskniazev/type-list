@@ -15,7 +15,10 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
 endif()
 
 add_library(type_list)
-target_sources(type_list PUBLIC FILE_SET CXX_MODULES FILES
+target_sources(type_list
+    PUBLIC
+        FILE_SET CXX_MODULES FILES
+            src/type_list.cppm
             src/core/core.cppm
             src/core/types.cppm
             src/core/type_list.cppm
@@ -37,65 +40,103 @@ target_sources(type_list PUBLIC FILE_SET CXX_MODULES FILES
             src/transform/map.cppm
             src/transform/filter.cppm
             src/transform/fold_left.cppm
+            src/transform/fold_right.cppm
+            src/combine/combine.cppm
+            src/combine/zip.cppm
+            src/combine/zip_with.cppm
+            src/combine/unzip.cppm
+            src/combine/reverse.cppm
+            src/combine/flatten.cppm
 )
 target_include_directories(type_list PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-add_executable(type_list_core_smoke_test "tests/core/smoke_test.cpp")
-target_link_libraries(type_list_core_smoke_test PRIVATE type_list)
-add_test(NAME type_list_core_smoke_test COMMAND type_list_core_smoke_test)
-add_executable(type_list_core_types_test "tests/core/types_test.cpp")
-target_link_libraries(type_list_core_types_test PRIVATE type_list)
-add_test(NAME type_list_core_types_test COMMAND type_list_core_types_test)
-add_executable(type_list_core_type_list_test "tests/core/type_list_test.cpp")
-target_link_libraries(type_list_core_type_list_test PRIVATE type_list)
-add_test(NAME type_list_core_type_list_test COMMAND type_list_core_type_list_test)
-add_executable(type_list_core_empty_test "tests/core/empty_test.cpp")
-target_link_libraries(type_list_core_empty_test PRIVATE type_list)
-add_test(NAME type_list_core_empty_test COMMAND type_list_core_empty_test)
-add_executable(type_list_core_size_test "tests/core/size_test.cpp")
-target_link_libraries(type_list_core_size_test PRIVATE type_list)
-add_test(NAME type_list_core_size_test COMMAND type_list_core_size_test)
-add_executable(type_list_access_front_test "tests/access/front_test.cpp")
-target_link_libraries(type_list_access_front_test PRIVATE type_list)
-add_test(NAME type_list_access_front_test COMMAND type_list_access_front_test)
-add_executable(type_list_access_back_test "tests/access/back_test.cpp")
-target_link_libraries(type_list_access_back_test PRIVATE type_list)
-add_test(NAME type_list_access_back_test COMMAND type_list_access_back_test)
-add_executable(type_list_access_pop_front_test "tests/access/pop_front_test.cpp")
-target_link_libraries(type_list_access_pop_front_test PRIVATE type_list)
-add_test(NAME type_list_access_pop_front_test COMMAND type_list_access_pop_front_test)
-add_executable(type_list_access_pop_back_test "tests/access/pop_back_test.cpp")
-target_link_libraries(type_list_access_pop_back_test PRIVATE type_list)
-add_test(NAME type_list_access_pop_back_test COMMAND type_list_access_pop_back_test)
-add_executable(type_list_access_push_front_test "tests/access/push_front_test.cpp")
-target_link_libraries(type_list_access_push_front_test PRIVATE type_list)
-add_test(NAME type_list_access_push_front_test COMMAND type_list_access_push_front_test)
-add_executable(type_list_access_push_back_test "tests/access/push_back_test.cpp")
-target_link_libraries(type_list_access_push_back_test PRIVATE type_list)
-add_test(NAME type_list_access_push_back_test COMMAND type_list_access_push_back_test)
-add_executable(type_list_build_insert_test "tests/build/insert_test.cpp")
-target_link_libraries(type_list_build_insert_test PRIVATE type_list)
-add_test(NAME type_list_build_insert_test COMMAND type_list_build_insert_test)
-add_executable(type_list_build_concat_test "tests/build/concat_test.cpp")
-target_link_libraries(type_list_build_concat_test PRIVATE type_list)
-add_test(NAME type_list_build_concat_test COMMAND type_list_build_concat_test)
-add_executable(type_list_build_from_pack_test "tests/build/from_pack_test.cpp")
-target_link_libraries(type_list_build_from_pack_test PRIVATE type_list)
-add_test(NAME type_list_build_from_pack_test COMMAND type_list_build_from_pack_test)
-add_executable(type_list_transform_map_test "tests/transform/map_test.cpp")
-target_link_libraries(type_list_transform_map_test PRIVATE type_list)
-add_test(NAME type_list_transform_map_test COMMAND type_list_transform_map_test)
-add_executable(type_list_transform_filter_test "tests/transform/filter_test.cpp")
-target_link_libraries(type_list_transform_filter_test PRIVATE type_list)
-add_test(NAME type_list_transform_filter_test COMMAND type_list_transform_filter_test)
-add_executable(type_list_transform_fold_left_test "tests/transform/fold_left_test.cpp")
-target_link_libraries(type_list_transform_fold_left_test PRIVATE type_list)
-add_test(NAME type_list_transform_fold_left_test COMMAND type_list_transform_fold_left_test)
-add_executable(type_list_transform_fold_right_test "tests/transform/fold_right_test.cpp")
-target_link_libraries(type_list_transform_fold_right_test PRIVATE type_list)
-add_test(NAME type_list_transform_fold_right_test COMMAND type_list_transform_fold_right_test)
-add_executable(type_list_core "examples/core.cpp")
-target_link_libraries(type_list_core PRIVATE type_list)
-add_executable(type_list_access "examples/access.cpp")
-target_link_libraries(type_list_access PRIVATE type_list)
-add_executable(type_list_transform "examples/transform.cpp")
-target_link_libraries(type_list_transform PRIVATE type_list)
+
+set(TYPE_LIST_CORE_TESTS
+    core/smoke_test
+    core/types_test
+    core/type_list_test
+    core/empty_test
+    core/size_test
+)
+
+foreach(rel_path IN LISTS TYPE_LIST_CORE_TESTS)
+    string(REPLACE "/" "_" stem "${rel_path}")
+    set(target "type_list_${stem}")
+    add_executable(${target} "tests/${rel_path}.cpp")
+    target_link_libraries(${target} PRIVATE type_list)
+    add_test(NAME ${target} COMMAND ${target})
+endforeach()
+
+set(TYPE_LIST_ACCESS_TESTS
+    access/front_test
+    access/back_test
+    access/pop_front_test
+    access/pop_back_test
+    access/push_front_test
+    access/push_back_test
+)
+
+foreach(rel_path IN LISTS TYPE_LIST_ACCESS_TESTS)
+    string(REPLACE "/" "_" stem "${rel_path}")
+    set(target "type_list_${stem}")
+    add_executable(${target} "tests/${rel_path}.cpp")
+    target_link_libraries(${target} PRIVATE type_list)
+    add_test(NAME ${target} COMMAND ${target})
+endforeach()
+
+set(TYPE_LIST_BUILD_TESTS
+    build/insert_test
+    build/concat_test
+    build/from_pack_test
+)
+
+foreach(rel_path IN LISTS TYPE_LIST_BUILD_TESTS)
+    string(REPLACE "/" "_" stem "${rel_path}")
+    set(target "type_list_${stem}")
+    add_executable(${target} "tests/${rel_path}.cpp")
+    target_link_libraries(${target} PRIVATE type_list)
+    add_test(NAME ${target} COMMAND ${target})
+endforeach()
+
+set(TYPE_LIST_TRANSFORM_TESTS
+    transform/map_test
+    transform/filter_test
+    transform/fold_left_test
+    transform/fold_right_test
+)
+
+foreach(rel_path IN LISTS TYPE_LIST_TRANSFORM_TESTS)
+    string(REPLACE "/" "_" stem "${rel_path}")
+    set(target "type_list_${stem}")
+    add_executable(${target} "tests/${rel_path}.cpp")
+    target_link_libraries(${target} PRIVATE type_list)
+    add_test(NAME ${target} COMMAND ${target})
+endforeach()
+
+set(TYPE_LIST_COMBINE_TESTS
+    combine/zip_test
+    combine/zip_with_test
+    combine/unzip_test
+    combine/reverse_test
+    combine/flatten_test
+)
+
+foreach(rel_path IN LISTS TYPE_LIST_COMBINE_TESTS)
+    string(REPLACE "/" "_" stem "${rel_path}")
+    set(target "type_list_${stem}")
+    add_executable(${target} "tests/${rel_path}.cpp")
+    target_link_libraries(${target} PRIVATE type_list)
+    add_test(NAME ${target} COMMAND ${target})
+endforeach()
+
+set(TYPE_LIST_EXAMPLES
+    core
+    access
+    transform
+    combine
+)
+
+foreach(rel_path IN LISTS TYPE_LIST_EXAMPLES)
+    set(target "type_list_${rel_path}")
+    add_executable(${target} "examples/${rel_path}.cpp")
+    target_link_libraries(${target} PRIVATE type_list)
+endforeach()
