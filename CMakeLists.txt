@@ -21,6 +21,13 @@ target_sources(type_list PUBLIC FILE_SET CXX_MODULES FILES
             src/core/type_list.cppm
             src/core/empty.cppm
             src/core/non_empty.cppm
+            src/core/size.cppm
+            src/access/access.cppm
+            src/access/front.cppm
+            src/access/back.cppm
+            src/access/pop_front.cppm
+            src/access/pop_back.cppm
+            src/access/push_front.cppm
 )
 target_include_directories(type_list PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 add_executable(type_list_core_smoke_test "tests/core/smoke_test.cpp")
@@ -38,5 +45,25 @@ add_test(NAME type_list_core_empty_test COMMAND type_list_core_empty_test)
 add_executable(type_list_core_size_test "tests/core/size_test.cpp")
 target_link_libraries(type_list_core_size_test PRIVATE type_list)
 add_test(NAME type_list_core_size_test COMMAND type_list_core_size_test)
+add_executable(type_list_access_front_test "tests/access/front_test.cpp")
+target_link_libraries(type_list_access_front_test PRIVATE type_list)
+add_test(NAME type_list_access_front_test COMMAND type_list_access_front_test)
+add_executable(type_list_access_back_test "tests/access/back_test.cpp")
+target_link_libraries(type_list_access_back_test PRIVATE type_list)
+add_test(NAME type_list_access_back_test COMMAND type_list_access_back_test)
+add_executable(type_list_access_pop_front_test "tests/access/pop_front_test.cpp")
+target_link_libraries(type_list_access_pop_front_test PRIVATE type_list)
+add_test(NAME type_list_access_pop_front_test COMMAND type_list_access_pop_front_test)
+add_executable(type_list_access_pop_back_test "tests/access/pop_back_test.cpp")
+target_link_libraries(type_list_access_pop_back_test PRIVATE type_list)
+add_test(NAME type_list_access_pop_back_test COMMAND type_list_access_pop_back_test)
+add_executable(type_list_access_push_front_test "tests/access/push_front_test.cpp")
+target_link_libraries(type_list_access_push_front_test PRIVATE type_list)
+add_test(NAME type_list_access_push_front_test COMMAND type_list_access_push_front_test)
+add_executable(type_list_access_push_back_test "tests/access/push_back_test.cpp")
+target_link_libraries(type_list_access_push_back_test PRIVATE type_list)
+add_test(NAME type_list_access_push_back_test COMMAND type_list_access_push_back_test)
 add_executable(type_list_core "examples/core.cpp")
 target_link_libraries(type_list_core PRIVATE type_list)
+add_executable(type_list_access "examples/access.cpp")
+target_link_libraries(type_list_access PRIVATE type_list)
