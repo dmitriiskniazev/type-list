@@ -16,5 +16,27 @@ endif()
 
 add_library(type_list)
 target_sources(type_list PUBLIC FILE_SET CXX_MODULES FILES
+            src/core/core.cppm
+            src/core/types.cppm
+            src/core/type_list.cppm
+            src/core/empty.cppm
+            src/core/non_empty.cppm
 )
 target_include_directories(type_list PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+add_executable(type_list_core_smoke_test "tests/core/smoke_test.cpp")
+target_link_libraries(type_list_core_smoke_test PRIVATE type_list)
+add_test(NAME type_list_core_smoke_test COMMAND type_list_core_smoke_test)
+add_executable(type_list_core_types_test "tests/core/types_test.cpp")
+target_link_libraries(type_list_core_types_test PRIVATE type_list)
+add_test(NAME type_list_core_types_test COMMAND type_list_core_types_test)
+add_executable(type_list_core_type_list_test "tests/core/type_list_test.cpp")
+target_link_libraries(type_list_core_type_list_test PRIVATE type_list)
+add_test(NAME type_list_core_type_list_test COMMAND type_list_core_type_list_test)
+add_executable(type_list_core_empty_test "tests/core/empty_test.cpp")
+target_link_libraries(type_list_core_empty_test PRIVATE type_list)
+add_test(NAME type_list_core_empty_test COMMAND type_list_core_empty_test)
+add_executable(type_list_core_size_test "tests/core/size_test.cpp")
+target_link_libraries(type_list_core_size_test PRIVATE type_list)
+add_test(NAME type_list_core_size_test COMMAND type_list_core_size_test)
+add_executable(type_list_core "examples/core.cpp")
+target_link_libraries(type_list_core PRIVATE type_list)
