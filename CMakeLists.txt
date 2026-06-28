@@ -28,6 +28,10 @@ target_sources(type_list PUBLIC FILE_SET CXX_MODULES FILES
             src/access/pop_front.cppm
             src/access/pop_back.cppm
             src/access/push_front.cppm
+            src/access/push_back.cppm
+            src/build/build.cppm
+            src/build/insert.cppm
+            src/build/concat.cppm
 )
 target_include_directories(type_list PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 add_executable(type_list_core_smoke_test "tests/core/smoke_test.cpp")
@@ -63,6 +67,15 @@ add_test(NAME type_list_access_push_front_test COMMAND type_list_access_push_fro
 add_executable(type_list_access_push_back_test "tests/access/push_back_test.cpp")
 target_link_libraries(type_list_access_push_back_test PRIVATE type_list)
 add_test(NAME type_list_access_push_back_test COMMAND type_list_access_push_back_test)
+add_executable(type_list_build_insert_test "tests/build/insert_test.cpp")
+target_link_libraries(type_list_build_insert_test PRIVATE type_list)
+add_test(NAME type_list_build_insert_test COMMAND type_list_build_insert_test)
+add_executable(type_list_build_concat_test "tests/build/concat_test.cpp")
+target_link_libraries(type_list_build_concat_test PRIVATE type_list)
+add_test(NAME type_list_build_concat_test COMMAND type_list_build_concat_test)
+add_executable(type_list_build_from_pack_test "tests/build/from_pack_test.cpp")
+target_link_libraries(type_list_build_from_pack_test PRIVATE type_list)
+add_test(NAME type_list_build_from_pack_test COMMAND type_list_build_from_pack_test)
 add_executable(type_list_core "examples/core.cpp")
 target_link_libraries(type_list_core PRIVATE type_list)
 add_executable(type_list_access "examples/access.cpp")
