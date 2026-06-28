@@ -1,0 +1,17 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list_core_smoke_test.dir/tests/core/smoke_test.cpp.o",
+      "requires": [
+        {
+          "logical-name": "std"
+        },
+        {
+          "logical-name": "type_list"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,24 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list.dir/src/core/type_list.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "type_list.core:type_list",
+          "source-path": "/Users/dskniazev/projects/github/dmitriiskniazev/type-list/src/core/type_list.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "std"
+        },
+        {
+          "logical-name": "type_list.core:types"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

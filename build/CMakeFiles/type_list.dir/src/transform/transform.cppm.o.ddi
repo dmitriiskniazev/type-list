@@ -1,0 +1,30 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list.dir/src/transform/transform.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "type_list.transform",
+          "source-path": "/Users/dskniazev/projects/github/dmitriiskniazev/type-list/src/transform/transform.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "type_list.transform:map"
+        },
+        {
+          "logical-name": "type_list.transform:filter"
+        },
+        {
+          "logical-name": "type_list.transform:fold_left"
+        },
+        {
+          "logical-name": "type_list.transform:fold_right"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

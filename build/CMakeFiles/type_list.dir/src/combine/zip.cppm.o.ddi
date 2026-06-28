@@ -1,0 +1,24 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list.dir/src/combine/zip.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "type_list.combine:zip",
+          "source-path": "/Users/dskniazev/projects/github/dmitriiskniazev/type-list/src/combine/zip.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "std"
+        },
+        {
+          "logical-name": "type_list.core"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

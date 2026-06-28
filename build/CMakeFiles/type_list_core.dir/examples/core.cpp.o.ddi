@@ -1,0 +1,17 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list_core.dir/examples/core.cpp.o",
+      "requires": [
+        {
+          "logical-name": "std"
+        },
+        {
+          "logical-name": "type_list"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

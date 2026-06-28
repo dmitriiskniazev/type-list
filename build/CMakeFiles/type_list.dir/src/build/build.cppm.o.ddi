@@ -1,0 +1,27 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list.dir/src/build/build.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "type_list.build",
+          "source-path": "/Users/dskniazev/projects/github/dmitriiskniazev/type-list/src/build/build.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "type_list.build:insert"
+        },
+        {
+          "logical-name": "type_list.build:concat"
+        },
+        {
+          "logical-name": "type_list.build:from_pack"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

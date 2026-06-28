@@ -1,0 +1,17 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list_core_size_test.dir/tests/core/size_test.cpp.o",
+      "requires": [
+        {
+          "logical-name": "std"
+        },
+        {
+          "logical-name": "type_list"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,33 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list.dir/src/core/core.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "type_list.core",
+          "source-path": "/Users/dskniazev/projects/github/dmitriiskniazev/type-list/src/core/core.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "type_list.core:types"
+        },
+        {
+          "logical-name": "type_list.core:type_list"
+        },
+        {
+          "logical-name": "type_list.core:empty"
+        },
+        {
+          "logical-name": "type_list.core:non_empty"
+        },
+        {
+          "logical-name": "type_list.core:size"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

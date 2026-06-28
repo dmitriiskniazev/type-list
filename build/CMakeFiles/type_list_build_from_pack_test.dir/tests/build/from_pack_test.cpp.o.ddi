@@ -1,0 +1,17 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list_build_from_pack_test.dir/tests/build/from_pack_test.cpp.o",
+      "requires": [
+        {
+          "logical-name": "std"
+        },
+        {
+          "logical-name": "type_list"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

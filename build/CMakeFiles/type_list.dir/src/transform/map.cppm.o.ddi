@@ -1,0 +1,24 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list.dir/src/transform/map.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "type_list.transform:map",
+          "source-path": "/Users/dskniazev/projects/github/dmitriiskniazev/type-list/src/transform/map.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "std"
+        },
+        {
+          "logical-name": "type_list.core"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,17 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list_access.dir/examples/access.cpp.o",
+      "requires": [
+        {
+          "logical-name": "std"
+        },
+        {
+          "logical-name": "type_list"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

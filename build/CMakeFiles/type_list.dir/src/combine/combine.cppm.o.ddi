@@ -1,0 +1,33 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list.dir/src/combine/combine.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "type_list.combine",
+          "source-path": "/Users/dskniazev/projects/github/dmitriiskniazev/type-list/src/combine/combine.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "type_list.combine:zip"
+        },
+        {
+          "logical-name": "type_list.combine:zip_with"
+        },
+        {
+          "logical-name": "type_list.combine:unzip"
+        },
+        {
+          "logical-name": "type_list.combine:reverse"
+        },
+        {
+          "logical-name": "type_list.combine:flatten"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,36 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list.dir/src/access/access.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "type_list.access",
+          "source-path": "/Users/dskniazev/projects/github/dmitriiskniazev/type-list/src/access/access.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "type_list.access:front"
+        },
+        {
+          "logical-name": "type_list.access:back"
+        },
+        {
+          "logical-name": "type_list.access:pop_front"
+        },
+        {
+          "logical-name": "type_list.access:pop_back"
+        },
+        {
+          "logical-name": "type_list.access:push_front"
+        },
+        {
+          "logical-name": "type_list.access:push_back"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

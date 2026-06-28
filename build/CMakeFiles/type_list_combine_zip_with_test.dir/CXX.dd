@@ -1,0 +1,3 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/type_list_combine_zip_with_test.dir/tests/combine/zip_with_test.cpp.o: dyndep | CMakeFiles/__cmake_cxx_std_23.dir/std.pcm CMakeFiles/type_list.dir/type_list.pcm
+

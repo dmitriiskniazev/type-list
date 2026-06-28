@@ -1,0 +1,27 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/type_list.dir/src/combine/reverse.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "type_list.combine:reverse",
+          "source-path": "/Users/dskniazev/projects/github/dmitriiskniazev/type-list/src/combine/reverse.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "std"
+        },
+        {
+          "logical-name": "type_list.access"
+        },
+        {
+          "logical-name": "type_list.core"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}
